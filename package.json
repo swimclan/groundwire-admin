@@ -1,0 +1,14 @@
+{
+  "name": "trading-admin",
+  "version": "0.0.1",
+  "description": "A user interface for configuring the trading app",
+  "main": "entry.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Matthew Herron",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^3.6.0"
+  }
+}
