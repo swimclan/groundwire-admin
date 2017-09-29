@@ -1,12 +1,12 @@
 import Vue from 'vue';
-
-Vue.component('app', {
-    template: ''
-});
+import config from 'services/config';
 
 new Vue({
     el: '#app',
     data: {
-        greeting: "Welcome to Groundwire"
+        appName: config.get('app.name')
+    },
+    created() {
+        console.log(config.get('app.name'));
     }
 });
