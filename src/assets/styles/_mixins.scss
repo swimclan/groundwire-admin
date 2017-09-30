@@ -3,3 +3,14 @@
 * Mixins
 *
 */
+
+@import './variables';
+
+@mixin center($width: 5%) {
+    width: $width;
+    margin: 0 auto;
+}
+
+@mixin shadow($x: 1px, $y: 1px, $diffusion: 3px) {
+    box-shadow: $x $y $diffusion $app-dark;
+}

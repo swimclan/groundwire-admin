@@ -5,13 +5,12 @@
   "main": "entry.js",
   "scripts": {
     "test": "test",
-    "start": "webpack & webpack-dev-server"
+    "start": "webpack & webpack-dev-server --watch"
   },
   "author": "Matthew Herron",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.4",
-    "vue": "^2.4.4"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -22,6 +21,9 @@
     "path": "^0.12.7",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "vue": "^2.4.4",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0"
   }
 }

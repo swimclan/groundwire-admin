@@ -3,6 +3,9 @@ import config from 'services/config';
 
 config.set({
     app: {
-        name: 'Groundwire Strategy Administration'
+        name: 'Groundwire Strategy Administration',
+        author: 'Matthew Herron'
     }
 });
+
+export default config;

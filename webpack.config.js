@@ -9,7 +9,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.scss$/,
+                test: /\.s[a|c]ss$/,
                 use: [{
                     loader: "style-loader" // creates style nodes from JS strings
                 }, {
@@ -27,23 +27,27 @@ module.exports = {
                         presets: ['env']
                     }
                 }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
         ]
     },
     resolve: {
-        extensions: [ '.js', '.json', '.css', '.scss' ],
+        extensions: [ '.js', '.json', '.css', '.scss', '.vue' ],
         modules: [
           'node_modules'
         ],
         alias: {
-            config: path.resolve(__dirname, 'config'),
-            styles: path.resolve(__dirname, 'src/assets/styles'),
-            images: path.resolve(__dirname, 'src/assets/images'),
-            components: path.resolve(__dirname, 'src/components'),
-            pages: path.resolve(__dirname, 'src/pages'),
-            services: path.resolve(__dirname, 'src/services'),
-            state: path.resolve(__dirname, 'src/state'),
-            utilities: path.resolve(__dirname, 'src/utilities'),
+            config: path.resolve(__dirname, './config'),
+            styles: path.resolve(__dirname, './src/assets/styles'),
+            images: path.resolve(__dirname, './src/assets/images'),
+            components: path.resolve(__dirname, './src/components'),
+            pages: path.resolve(__dirname, './src/pages'),
+            services: path.resolve(__dirname, './src/services'),
+            state: path.resolve(__dirname, './src/state'),
+            utilities: path.resolve(__dirname, './src/utilities'),
             vue: 'vue/dist/vue.js'
         }
     }
