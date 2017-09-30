@@ -5,7 +5,7 @@
   "main": "entry.js",
   "scripts": {
     "test": "test",
-    "start": "webpack & webpack-dev-server --watch"
+    "start": "webpack & webpack-dev-server --watch --content-base=dist --hot"
   },
   "author": "Matthew Herron",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "style-loader": "^0.18.2",
     "vue": "^2.4.4",
     "vue-loader": "^13.0.5",
+    "vue-router": "^2.7.0",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0"
   }
