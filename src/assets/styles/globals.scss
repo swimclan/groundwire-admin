@@ -1,3 +1,114 @@
-h1, h2, h3, h4, h5 {
-    font-family: Arial, Helvetica, sans-serif;
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	text-align: center;
+	font-size: 32px;
+	font-weight: 800;
+	padding: 18px;
+}
+
+//header {
+//	background-image: url('./images/logo.png');
+//}
+
+h3 {
+	padding: 12px 0 12px 12px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+h4 {
+	text-align: center;
+	font-size: 18px;
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.box {
+	width: 50%;
+	height: 50%;
+	margin: auto;
+	background-color: #fff;
+	display: table;
+}
+
+.formContainer {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.form-group textarea {
+	position: relative;
+	width: 60%;
+	height: 20px;
+	border: solid 1px #ccc;
+	margin: 6px auto;
+	resize: none;
+}
+
+.box h4 {
+	/*text-align: center;*/
+	margin: 6px auto;
+}
+
+.connect {
+	position: relative;
+	background-color: green;
+	color: #fff;
+	border: none;
+	width: 62.5%;
+	margin: 6px auto;
+	padding: 6px;
+	box-sizing: border-box;
+}
+
+.message {
+	margin-top: 12px;
+	height: 12px;
+	-webkit-transition: opacity .25s ease-in;
+	-moz-transition: opacity .25s ease-in;
+	-ms-transition: opacity .25s ease-in;
+	-o-transition: opacity .25s ease-in;
+	transition: opacity .25s ease-in;
+}
+
+.loaded {
+	opacity: 1;
+}
+
+.unloaded {
+	opacity: 0;
+}
+
+.widgets {
+	margin: 12px auto;
+	display: flex;
+	width: 836px;
+	flex-wrap: wrap;
+}
+
+.widget {
+	height: 300px;
+	width: 400px;
+	border: solid 1px #ff0000;
+	margin-bottom: 18px;
+
+}
+
+
+
+.left {
+	margin-right: 18px;
+
+}
+
+.right {
 }

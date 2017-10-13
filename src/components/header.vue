@@ -2,18 +2,23 @@
     <header class="header-container">
         <h3>{{ title }}</h3>
         <nav id="main-nav">
-            <router-link to="login" class="nav-link">Login</router-link>
-            <router-link to="bind" class="nav-link">Bind</router-link>
+            <router-link to="login" class="nav-link"  v-show="authenticated === false">Log In</router-link>
+            <!--<router-link to="bind" class="nav-link">Bind</router-link>-->
             <router-link to="dashboard" class="nav-link">Dashboard</router-link>
+            <router-link to="logout" class="nav-link" v-show="authenticated === true" v-on:click="authenticated = false">Log Out</router-link>
         </nav>
     </header>
 </template>
 
 <script>
     import config from 'config';
+    import data from '../state/model.js';
     export default {
         data: () => {
-            return {title: config.get('app.name')}
+            return {
+                title: config.get('app.name'),
+                authenticated: data.authenticated
+            }
         }
     }
 </script>
@@ -22,17 +27,18 @@
     @import '../assets/styles/component.scss';
     header.header-container {
         width: 100%;
-        height: 60px;
+        height: auto;
         background-color: $app-light;
         text-align: center;
         @include shadow();
         nav#main-nav {
             display: flex;
-            justify-content: flex-end;
+            padding: 12px 0;
+            justify-content: center;
             .nav-link {
-                font-weight: bold;
+                font-weight: 600;
                 width: 8%;
-                text-align: center;
+                text-decoration: none;
             }
         }
     }
