@@ -1,11 +1,9 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import Login from 'components/login';
 import Logout from 'components/logout';
 import Bind from 'components/bind';
 import Dashboard from 'components/dashboard';
-
-Vue.use(VueRouter);
+import VueRouter from 'vue-router';
 
 const routes = [
     { path: '*', redirect: '/login' },

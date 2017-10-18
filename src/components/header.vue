@@ -12,12 +12,11 @@
 
 <script>
     import config from 'config';
-    import data from '../state/model.js';
     export default {
         data: () => {
             return {
                 title: config.get('app.name'),
-                authenticated: data.authenticated
+                authenticated: false
             }
         }
     }
@@ -36,8 +35,8 @@
             padding: 12px 0;
             justify-content: center;
             .nav-link {
-                font-weight: 600;
-                width: 8%;
+                font-weight: 200;
+                width: 100px;
                 text-decoration: none;
             }
         }

@@ -17,3 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Vue router for routing between content views
 - Browser sync in the webpack dev server to enable hot browser reloads
 
+## [0.1.0] - 2017-10-15
+### Added
+- Login integration with groundwire API server
+- Cleaned up login page code and authentication method
+

@@ -1,34 +1,8 @@
 // store.js
-
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
+import Vue from 'vue';
 
 // the root, initial state object
 const state = {
-  credentials: [
-        {
-            username: "mherron",
-            firstName: "Matthew",
-            surname: "Herron",
-            password: "password1"
-        },
-        {
-            username: "chastings",
-            firstName: "Chris",
-            surname: "Hastings",
-            password: "password2"
-        }
-    ],
-    widgets: [
-        "Account",
-        "Risk Settings",
-        "Stop Strategy",
-        "Stock Picks",
-        "Activate",
-        "Save Settings"
-    ],
     authenticated: false
 }
 

@@ -4,5 +4,8 @@
 *
 */
 $app-white: rgb(100%, 100%, 100%);
-$app-light: rgb(91%, 92.5%, 91%);
+$app-light: rgb(255, 255, 255);
 $app-dark: darken($app-light, 10%);
+$error-color: #881222;
+$body-bg-color: #f2f7fa;
+$app-blue: #0a4b70;
