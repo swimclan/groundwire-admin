@@ -1,3 +1,17 @@
-@import './reset';
+@import './normalize';
+$fa-font-path: "~font-awesome/fonts";
+@font-face {
+  font-family: 'FontAwesome';
+  src: url($fa-font-path + "/fontawesome-webfont.eot");
+  src: url($fa-font-path + "/fontawesome-webfont.ttf");
+  src: url($fa-font-path + "/fontawesome-webfont.woff");
+  src: url($fa-font-path + "/fontawesome-webfont.woff2");
+  src: url($fa-font-path + "/fontawesome-webfont.svg");
+}
+@import '~font-awesome/scss/font-awesome.scss';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:100,300,400");
+
 @import './variables';
-@import './globals';
+@import './mixins';
+@import './layout';
+@import './global';

@@ -22,3 +22,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Login integration with groundwire API server
 - Cleaned up login page code and authentication method
 
+## [0.1.1] - 2017-10-15
+### Added
+- Login page styles

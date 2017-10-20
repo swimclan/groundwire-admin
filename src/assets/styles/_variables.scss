@@ -3,9 +3,12 @@
 * Variables
 *
 */
+
+/* colors */
 $app-white: rgb(100%, 100%, 100%);
-$app-light: rgb(255, 255, 255);
-$app-dark: darken($app-light, 10%);
+$app-light: #ecf1f3;
+$app-shadow: darken($app-light, 10%);
+$app-med-light: darken($app-light, 20%);
 $error-color: #881222;
 $body-bg-color: #f2f7fa;
-$app-blue: #0a4b70;
+$app-blue: #1490d3;

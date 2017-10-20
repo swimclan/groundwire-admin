@@ -29,8 +29,16 @@ config.set({
         }
     },
     ajax: {
+        default: {
+            options: {
+                mode: 'cors',
+                credentials: 'include'
+            }
+        },
         login: {
-            url: 'https://api.groundwire.co/v1/user/login'
+            url: 'https://api.groundwire.co/v1/user/login',
+            method: 'POST',
+            options: {}
         }
     }
 });

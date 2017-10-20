@@ -7,10 +7,21 @@
 @import './variables';
 
 @mixin center($width: 5%) {
-    width: $width;
-    margin: 0 auto;
+  width: $width;
+  margin: 0 auto;
 }
 
-@mixin shadow($x: 1px, $y: 1px, $diffusion: 3px) {
-    box-shadow: $x $y $diffusion $app-dark;
+@mixin box($width: 200px, $bg-color: $app-white) {
+  width: 100%;
+  height: 100%;
+  max-width: $width;
+  max-height: $width;
+  background-color: $bg-color;
+  @include shadow();
+}
+
+@mixin shadow($x: 0px, $y: 0px, $diffusion: 30px, $spread: -3px, $color: $app-shadow) {
+  -webkit-box-shadow: $x $y $diffusion $spread $color;
+  -moz-box-shadow: $x $y $diffusion $spread $color;
+  box-shadow: $x $y $diffusion $spread $color;
 }

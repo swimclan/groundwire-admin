@@ -1,6 +1,5 @@
 <template>
   <div id='dashboard'>
-    <h2>admin.groundwire.co</h2>
     <h4>Welcome, {{name}}! Please manage your Groundwire trading profile below.</h4>
   </div>
 </template>
