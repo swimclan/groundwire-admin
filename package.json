@@ -1,6 +1,6 @@
 {
   "name": "trading-admin",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A user interface for configuring the trading app",
   "main": "entry.js",
   "scripts": {
@@ -17,6 +17,9 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",

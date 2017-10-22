@@ -6,13 +6,14 @@ import Dashboard from 'components/dashboard';
 import VueRouter from 'vue-router';
 
 const routes = [
-    { path: '*', redirect: '/login' },
-    { path: '/login', component: Login },
-    { path: '/robinhood', component: Robinhood },
-    { path: '/dashboard', component: Dashboard },
-    { path: '/logout', component: Logout }
+  { name: 'root', path: '*', redirect: '/login' },
+  { name: 'login', path: '/login', component: Login },
+  { name: 'robinhood', path: '/robinhood', component: Robinhood },
+  { name: 'dashboard', path: '/dashboard', component: Dashboard },
+  { name: 'logout', path: '/logout', component: Logout }
 ];
 
-export default new VueRouter({
-    routes
+export const router = new VueRouter({
+  routes
 });
+

@@ -1,7 +1,7 @@
 import config from 'config';
 import {merge} from 'lodash';
 
-export default function(email, password, cb) {
+export const login = function(email, password, cb) {
   let ret = {};
   let formdata = new FormData();
   formdata.append('emailAddress', email);
@@ -29,5 +29,37 @@ export default function(email, password, cb) {
     ret.error = true;
     ret.message = config.get('messages.flash.server.error');
     cb(err, ret);
+  });
+}
+
+export const check = function(cb) {
+  fetch(config.get('ajax.logincheck.url'), {
+    method: config.get('ajax.logincheck.method'),
+    credentials: 'include',
+    mode: 'cors'
+  }).then((res) => {
+    res.json().then((json) => {
+      cb(null, json);
+    }).catch((err) => {
+      cb(err, null);
+    });
+  }).catch((err) => {
+    cb(err, null);
+  });
+}
+
+export const logout = function(cb) {
+  fetch(config.get('ajax.logout.url'), {
+    method: config.get('ajax.logout.method'),
+    credentials: 'include',
+    mode: 'cors'
+  }).then((res) => {
+    res.json().then((json) => {
+      cb(null, json);
+    }).catch((err) => {
+      cb(err, null);
+    });
+  }).catch((err) => {
+    cb(err, null);
   });
 }

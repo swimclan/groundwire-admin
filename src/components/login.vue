@@ -24,8 +24,18 @@
 <script>
 	import router from '../router.js';
 	import config from 'config';
-	import loginSvc from 'services/login';
+	import {login} from 'services/authentication';
+	import {check} from 'services/authentication';
+	import {mapMutations} from 'vuex';
+	
 	export default {
+		created() {
+			check((err, res) => {
+				if (res.authorized) {
+					this.setAuth(true);
+				}
+			});
+		},
 	  data() {
       return {
 				heading: config.get('app.pages.login.headings.main'),
@@ -38,8 +48,10 @@
 			}
 		},
 		methods: {
+			...mapMutations(['setAuth']),
       authenticate() {
-				loginSvc(this.email, this.password, (err, result) => {
+				login(this.email, this.password, (err, result) => {
+					if (!result.error) this.setAuth(true);
 					this.flash.message = result.message;
 					this.flash.error = result.error;
 				});
@@ -52,6 +64,7 @@
 	@import '../assets/styles/index';
 	.login-container {
 		height: inherit;
+		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -112,5 +125,4 @@
 			}
 		}
 	}
-
 </style>

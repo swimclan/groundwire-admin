@@ -25,3 +25,10 @@
   -moz-box-shadow: $x $y $diffusion $spread $color;
   box-shadow: $x $y $diffusion $spread $color;
 }
+
+@mixin navigation-link() {
+  font-weight: 200;
+  width: 100px;
+  color: rgb(23.4%, 23.4%, 23.4%);
+  text-decoration: none;
+}

@@ -25,3 +25,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.1.1] - 2017-10-15
 ### Added
 - Login page styles
+
+## [0.2.0] - 2017-10-23
+### Added
+- Additional page layout styles
+- Vuex integration with authentication state
+- Login sessions and logout support
+- Check service to check for active login session
