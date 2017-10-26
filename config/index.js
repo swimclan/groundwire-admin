@@ -13,6 +13,13 @@ config.set({
         title: 'Groundwire Login',
         headings: {
           main: 'Login to Groundwire Administration'
+        },
+        formbutton: 'Login'
+      },
+      robinhood: {
+        formbutton: 'Connect',
+        headings: {
+          main: 'Connect to Robinhood Account'
         }
       }
     }

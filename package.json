@@ -1,6 +1,6 @@
 {
   "name": "trading-admin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A user interface for configuring the trading app",
   "main": "entry.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",
     "font-awesome-webpack": "0.0.5-beta.2",
+    "image-webpack-loader": "^3.4.2",
     "node-sass": "^4.5.3",
     "path": "^0.12.7",
     "sass-loader": "^6.0.6",

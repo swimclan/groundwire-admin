@@ -10,6 +10,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [{
+          loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]'
+        }, {
+          loader: 'image-webpack-loader'
+        }]
+      },
+      {
         test: /\.s[a|c]ss$/,
         use: [{
           loader: "style-loader" // creates style nodes from JS strings

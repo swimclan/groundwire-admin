@@ -1,6 +1,16 @@
 <template>
-  <aside class="sidebar-container"></aside>
+  <aside class="sidebar-container" v-bind:class="{ rh: currentRoute === 'robinhood' }"></aside>
 </template>
+
+<script>
+import {mapGetters} from 'vuex';
+export default {
+  computed: {
+    ...mapGetters(['currentRoute'])
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
   @import '../assets/styles/index';
@@ -9,6 +19,9 @@
     width: 20%;
     height: 100%;
     background-color: $app-blue;
+    &.rh {
+      background-color: $robinhood-green
+    }
   }
 </style>
 

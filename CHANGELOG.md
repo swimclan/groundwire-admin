@@ -32,3 +32,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Vuex integration with authentication state
 - Login sessions and logout support
 - Check service to check for active login session
+
+## [0.3.0] - 2017-10-25
+### Added
+- Styles for Robinhood page
+- Mixins (scss) for login widget shared styles
+- Image loader for webpack
+- Sidebar custom colors for Robinhood page

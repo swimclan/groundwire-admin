@@ -32,3 +32,56 @@
   color: rgb(23.4%, 23.4%, 23.4%);
   text-decoration: none;
 }
+
+@mixin input-container($width: 90%, $padding: 3%) {
+  width: $width;
+  padding: $padding;
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin icon-container($username-icon: "\f2c3", $password-icon: "\f084", $background-color: $app-blue, $icon-color: $app-white) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::before {
+    font-family: 'FontAwesome';
+    color: $icon-color;
+    font-weight: 100;
+    font-size: 1.5em;
+  }
+  &#email-icon::before {
+    content: $username-icon;
+  }
+  &#password-icon::before {
+    content: $password-icon;
+  }
+  width: 20%;
+  height: 50px;
+  background-color: $background-color;
+}
+
+@mixin input-field($border-color: $app-blue) {
+  font-family: Roboto;
+  font-weight: 100;
+  width: 80%;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid $border-color;
+  outline: none;
+}
+
+@mixin input-button($background-color: $app-blue, $color: $app-white) {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 1.5em;
+  width: 100%;
+  border: 0;
+  background-color: $background-color;
+  height: 50px;
+  color: $color;
+  outline: none;
+  &:hover {
+    background-color: lighten($background-color, 20%);
+  }
+}

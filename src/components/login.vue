@@ -11,7 +11,7 @@
 				<input type="password" class="form-input" placeholder="Password" v-model="password" />
 			</div>
 			<div class="input-container">
-				<button class="form-btn" v-on:click="authenticate()">Login</button>
+				<button class="form-btn" v-on:click="authenticate()">{{ formButton }}</button>
 			</div>
 			<div class="form-message" v-bind:class="{ error: flash.error }">
 				{{flash.message}}
@@ -44,7 +44,8 @@
 				flash: {
 					message: null,
 					error: false
-				}
+				},
+				formButton: config.get('app.pages.login.formbutton')
 			}
 		},
 		methods: {
@@ -75,52 +76,15 @@
 			align-items: center;
 			flex-direction: column;
 			.input-container {
-				width: 90%;
-				padding: 3%;
-				display: flex;
-				flex-direction: row;
+				@include input-container();
 				.icon-container {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					&::before {
-						font-family: 'FontAwesome';
-						color: $app-white;
-						font-weight: 100;
-						font-size: 1.5em;
-					}
-					&#email-icon::before {
-						content: "\f2c3";
-					}
-					&#password-icon::before {
-						content: "\f084";
-					}
-					width: 20%;
-					height: 50px;
-					background-color: $app-blue;
+					@include icon-container();
 				}
 				input {
-					font-family: Roboto;
-					font-weight: 100;
-					width: 80%;
-					height: 50px;
-					padding: 10px;
-					border: 1px solid $app-blue;
-					outline: none;
+					@include input-field();
 				}
 				button.form-btn {
-					font-family: Roboto;
-					font-weight: 300;
-					font-size: 1.5em;
-					width: 100%;
-					border: 0;
-					background-color: $app-blue;
-					height: 50px;
-					color: $app-white;
-					outline: none;
-					&:hover {
-						background-color: lighten($app-blue, 20%);
-					}
+					@include input-button();
 				}
 			}
 		}
