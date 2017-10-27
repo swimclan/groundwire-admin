@@ -67,7 +67,7 @@ module.exports = {
       pages: path.resolve(__dirname, './src/pages'),
       services: path.resolve(__dirname, './src/services'),
       state: path.resolve(__dirname, './src/state'),
-      utilities: path.resolve(__dirname, './src/utilities'),
+      tools: path.resolve(__dirname, './src/tools'),
       vue: 'vue/dist/vue.js'
     }
   }

@@ -32,6 +32,10 @@ config.set({
       login: {
         success: 'Login successful',
         unauthorized: 'Invalid email address or password'
+      },
+      tokenize: {
+        success: 'Robinhood account successfully connected',
+        unauthorized: 'Robinhood account credentials invalid'
       }
     }
   },
@@ -54,6 +58,11 @@ config.set({
     },
     logout: {
       url: 'https://api.groundwire.co/v1/user/logout',
+      method: 'GET',
+      options: {}
+    },
+    tokenize: {
+      url: 'https://api.groundwire.co/v1/user/tokenize',
       method: 'GET',
       options: {}
     }

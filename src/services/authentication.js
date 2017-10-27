@@ -1,7 +1,7 @@
 import config from 'config';
 import {merge} from 'lodash';
 
-export const login = function(email, password, cb) {
+export const login = (email, password, cb) => {
   let ret = {};
   let formdata = new FormData();
   formdata.append('emailAddress', email);
@@ -13,15 +13,18 @@ export const login = function(email, password, cb) {
     body: formdata
   })
   .then((res) => {
-    if (res.status === 401) {
-      ret.error = true;
-      ret.message = config.get('messages.flash.login.unauthorized');
-    } else if (res.status === 200) {
-      ret.error = false;
-      ret.message = config.get('messages.flash.login.success');
-    } else {
-      ret.error = true;
-      ret.message = config.get('messages.flash.server.error');
+    switch (res.status) {
+      case 401:
+        ret.error = true;
+        ret.message = config.get('messages.flash.login.unauthorized');
+        break;
+      case 200:
+        ret.error = false;
+        ret.message = config.get('messages.flash.login.success');
+        break;
+      default:
+        ret.error = true;
+        ret.message = config.get('messages.flash.server.error');
     }
     cb(null, ret);
   })
@@ -32,7 +35,7 @@ export const login = function(email, password, cb) {
   });
 }
 
-export const check = function(cb) {
+export const check = (cb) => {
   fetch(config.get('ajax.logincheck.url'), {
     method: config.get('ajax.logincheck.method'),
     credentials: 'include',
@@ -48,7 +51,7 @@ export const check = function(cb) {
   });
 }
 
-export const logout = function(cb) {
+export const logout = (cb) => {
   fetch(config.get('ajax.logout.url'), {
     method: config.get('ajax.logout.method'),
     credentials: 'include',

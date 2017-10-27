@@ -39,3 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Mixins (scss) for login widget shared styles
 - Image loader for webpack
 - Sidebar custom colors for Robinhood page
+
+## [0.4.0] - 2017-10-28
+### Added
+- Integration with Robinhood auth token handling on api

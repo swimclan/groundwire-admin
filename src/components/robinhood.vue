@@ -22,6 +22,7 @@
 
 <script>
 import config from 'config';
+import {tokenize} from 'services/robinhood';
 export default {
   data() {
     return {
@@ -36,7 +37,16 @@ export default {
     }
   },
   methods: {
-    authenticate() {}
+    authenticate() {
+			let creds = { username: this.username, password: this.password };
+			tokenize(creds, (err, result) => {
+				if (err) {
+					console.log(err);
+				}
+				this.flash.error = result.error;
+				this.flash.message = result.message;
+			});
+		}
   }
 }
 </script>
