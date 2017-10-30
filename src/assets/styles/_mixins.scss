@@ -27,8 +27,12 @@
 }
 
 @mixin navigation-link() {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 200;
-  width: 100px;
+  min-width: 120px;
   color: rgb(23.4%, 23.4%, 23.4%);
   text-decoration: none;
 }
@@ -40,7 +44,7 @@
   flex-direction: row;
 }
 
-@mixin icon-container($username-icon: "\f2c3", $password-icon: "\f084", $background-color: $app-blue, $icon-color: $app-white) {
+@mixin icon-container($username-icon: "\f2c3", $password-icon: "\f084", $background-color: $app-main, $icon-color: $app-white) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +65,7 @@
   background-color: $background-color;
 }
 
-@mixin input-field($border-color: $app-blue) {
+@mixin input-field($border-color: $app-main) {
   font-family: Roboto;
   font-weight: 100;
   width: 80%;
@@ -71,7 +75,7 @@
   outline: none;
 }
 
-@mixin input-button($background-color: $app-blue, $color: $app-white) {
+@mixin input-button($background-color: $app-main, $color: $app-white) {
   font-family: Roboto;
   font-weight: 300;
   font-size: 1.5em;

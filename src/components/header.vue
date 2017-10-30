@@ -26,7 +26,7 @@
     float: right;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
     height: $header-height-lg;
     background-color: $app-white;
     text-align: center;

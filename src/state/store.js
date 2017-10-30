@@ -5,16 +5,22 @@ import Vuex from 'vuex';
 // the root, initial state object
 const state = {
   authenticated: false,
-  currentRoute: null
+  connected: false,
+  currentRoute: null,
+  user: null
 }
 const getters = {
+  user: state => state.user,
   authenticated: state => state.authenticated,
+  connected: state => state.connected,
   currentRoute: state => state.currentRoute
 }
 
 const mutations = {
   toggleAuth: state => state.authenticated = !state.authenticated,
   setAuth: (state, auth) => state.authenticated = auth === true,
+  setConnected: (state, connected) => state.connected = connected === true,
+  setUser: (state, user) => state.user = user,
   setRoute: (state, name) => state.currentRoute = name
 }
 

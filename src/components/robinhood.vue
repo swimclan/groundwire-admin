@@ -22,7 +22,9 @@
 
 <script>
 import config from 'config';
-import {tokenize} from 'services/robinhood';
+import {tokenize} from 'services/authentication';
+import {check} from 'services/authentication';
+import {mapMutations} from 'vuex';
 export default {
   data() {
     return {
@@ -37,11 +39,16 @@ export default {
     }
   },
   methods: {
+		...mapMutations(['setConnected']),
     authenticate() {
 			let creds = { username: this.username, password: this.password };
 			tokenize(creds, (err, result) => {
 				if (err) {
 					console.log(err);
+				}
+				if (!result.error) {
+					this.setConnected(true);
+					this.$router.push('dashboard');
 				}
 				this.flash.error = result.error;
 				this.flash.message = result.message;
@@ -50,8 +57,6 @@ export default {
   }
 }
 </script>
-
-
 
 <style lang="scss" scoped>
 	@import '../assets/styles/index';

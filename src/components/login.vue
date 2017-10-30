@@ -25,17 +25,9 @@
 	import router from '../router.js';
 	import config from 'config';
 	import {login} from 'services/authentication';
-	import {check} from 'services/authentication';
 	import {mapMutations} from 'vuex';
 	
 	export default {
-		created() {
-			check((err, res) => {
-				if (res.authorized) {
-					this.setAuth(true);
-				}
-			});
-		},
 	  data() {
       return {
 				heading: config.get('app.pages.login.headings.main'),
@@ -49,10 +41,14 @@
 			}
 		},
 		methods: {
-			...mapMutations(['setAuth']),
+			...mapMutations(['setAuth', 'setUser']),
       authenticate() {
 				login(this.email, this.password, (err, result) => {
-					if (!result.error) this.setAuth(true);
+					if (!result.error && result.user) {
+						this.setAuth(true);
+						this.setUser(result.user);
+						this.$router.push('dashboard');
+					}
 					this.flash.message = result.message;
 					this.flash.error = result.error;
 				});

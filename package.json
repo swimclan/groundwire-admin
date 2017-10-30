@@ -1,11 +1,11 @@
 {
   "name": "trading-admin",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "A user interface for configuring the trading app",
   "main": "entry.js",
   "scripts": {
     "test": "test",
-    "start": "webpack & webpack-dev-server --watch --content-base=dist --hot"
+    "start": "webpack & webpack-dev-server --watch --content-base=dist --public admin.groundwire.co:8080 --hot --https"
   },
   "author": "Matthew Herron",
   "license": "ISC",
@@ -34,6 +34,7 @@
     "vue-router": "^2.8.0",
     "vue-template-compiler": "^2.4.4",
     "vuex": "^2.4.1",
-    "webpack": "^3.7.1"
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.3"
   }
 }

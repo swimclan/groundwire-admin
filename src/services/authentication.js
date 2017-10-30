@@ -1,5 +1,6 @@
 import config from 'config';
 import {merge} from 'lodash';
+import {encode} from 'tools/utils';
 
 export const login = (email, password, cb) => {
   let ret = {};
@@ -17,14 +18,17 @@ export const login = (email, password, cb) => {
       case 401:
         ret.error = true;
         ret.message = config.get('messages.flash.login.unauthorized');
+        ret.user = null;
         break;
       case 200:
         ret.error = false;
         ret.message = config.get('messages.flash.login.success');
+        ret.user = email;
         break;
       default:
         ret.error = true;
         ret.message = config.get('messages.flash.server.error');
+        ret.user = null;
     }
     cb(null, ret);
   })
@@ -64,5 +68,37 @@ export const logout = (cb) => {
     });
   }).catch((err) => {
     cb(err, null);
+  });
+}
+
+export const tokenize = ({username, password}, cb) => {
+  let ret = {};
+  let headers = new Headers();
+  let encoded = encode(username, password);
+  headers.append('Authorization', `Basic ${encoded}`);
+  fetch(config.get('ajax.tokenize.url'), {
+    method: config.get('ajax.tokenize.method'),
+    credentials: 'include',
+    mode: 'cors',
+    headers: headers
+  }).then((res) => {
+    switch (res.status) {
+      case 401:
+        ret.error = true;
+        ret.message = config.get('messages.flash.tokenize.unauthorized');
+        break;
+      case 200:
+        ret.error = false;
+        ret.message = config.get('messages.flash.tokenize.success');
+        break;
+      default:
+        ret.error = true;
+        ret.message = config.get('messages.server.error');
+    }
+    cb(null, ret);
+  }).catch((err) => {
+    ret.error = true;
+    ret.message = config.get('messages.server.error');
+    cb(err, ret);
   });
 }

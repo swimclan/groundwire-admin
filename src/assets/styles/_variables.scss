@@ -11,7 +11,8 @@ $app-shadow: darken($app-light, 10%);
 $app-med-light: darken($app-light, 20%);
 $error-color: #881222;
 $body-bg-color: #f2f7fa;
-$app-blue: #1490d3;
+$app-main: #1490d3;
+$app-gray: rgb(163, 163, 163);
 $robinhood-green: #5eca9c;
 $robinhood-dark: #000;
 
@@ -26,3 +27,7 @@ $header-height-sm: 40px;
 $content-height-lg: calc(100% - #{$header-height-lg});
 $content-height-md: calc(100% - #{$header-height-md});
 $content-height-sm: calc(100% - #{$header-height-sm});
+$font-sm: 10px;
+$font-md: 14px;
+$font-lg: 18px;
+

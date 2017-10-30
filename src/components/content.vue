@@ -17,7 +17,7 @@
 <style lang="scss" scoped>
   @import '../assets/styles/index';
   .content-container {
-    width: 80%;
+    width: 100%;
     height: $content-height-lg;
     float: right;
     display: flex;

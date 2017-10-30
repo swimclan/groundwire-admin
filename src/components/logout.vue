@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import config from 'config';
 import {mapMutations} from 'vuex';
 import {router} from '../router';
 import {logout} from 'services/authentication';
@@ -27,11 +28,13 @@ export default {
 				return;
 			}
 			this.setAuth(false);
+			this.setUser(null);
 		})
 	},
 	methods: {
 		...mapMutations([
-			'setAuth'
+			'setAuth',
+			'setUser'
 		])
 	}
 }

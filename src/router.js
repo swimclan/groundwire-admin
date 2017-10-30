@@ -13,7 +13,10 @@ const routes = [
   { name: 'logout', path: '/logout', component: Logout }
 ];
 
-export const router = new VueRouter({
+const router = new VueRouter({
   routes
 });
+
+
+export {router};
 

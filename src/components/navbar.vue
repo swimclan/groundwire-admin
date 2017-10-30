@@ -1,7 +1,7 @@
 <template>
   <nav id="main-nav">
-    <router-link to="dashboard" class="nav-link" v-on:click.native="setRoute('dashboard')">Dashboard</router-link>
-    <router-link to="robinhood" class="nav-link" v-on:click.native="setRoute('robinhood')">Robinhood</router-link>
+    <router-link to="dashboard" class="nav-link">Dashboard</router-link>
+    <router-link to="robinhood" class="nav-link">Robinhood</router-link>
   </nav>
 </template>
 

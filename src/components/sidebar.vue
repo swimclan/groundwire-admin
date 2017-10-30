@@ -16,9 +16,9 @@ export default {
   @import '../assets/styles/index';
   .sidebar-container {
     float: left;
-    width: 20%;
+    width: 0%;
     height: 100%;
-    background-color: $app-blue;
+    background-color: $app-main;
     &.rh {
       background-color: $robinhood-green
     }
