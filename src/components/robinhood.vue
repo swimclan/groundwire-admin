@@ -23,7 +23,6 @@
 <script>
 import config from 'config';
 import {tokenize} from 'services/authentication';
-import {check} from 'services/authentication';
 import {mapMutations} from 'vuex';
 export default {
   data() {

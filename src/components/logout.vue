@@ -1,8 +1,10 @@
 <template>
 	<div class="logout-container">
-		<h4>You have logged out of GroundWire</h4>
-		<router-link to="login">Return to login</router-link>
-		<div class="logout-error" v-bind:if="flash.error">{{flash.message}}</div>
+		<div class="logout-wrapper">
+			<h4>You have logged out of GroundWire</h4>
+			<router-link class="return-login" to="login">Return to login</router-link>
+			<div class="logout-error" v-bind:if="flash.error">{{flash.message}}</div>
+		</div>
 	</div>
 </template>
 
@@ -39,3 +41,26 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+	@import '../assets/styles/index';
+	.logout-container {
+		height: inherit;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.logout-wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			@include box($width: 400px);
+			a {
+				font-weight: 100;
+				text-decoration: none;
+			}
+		}
+	}
+</style>
+

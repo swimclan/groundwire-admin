@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapGetters} from 'vuex';
 export default {
-  methods: {
-    ...mapMutations(['setRoute'])
+  computed: {
+    ...mapGetters(['currentRoute'])
   }
 }
 </script>

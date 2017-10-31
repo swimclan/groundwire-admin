@@ -2,7 +2,6 @@
   <nav id="side-nav">
     <router-link to="login" class="nav-link" v-show="!authenticated">Log In</router-link>
     <span class="nav-icon authenticated" v-show="authenticated"></span>
-    <span class="nav-icon connected" v-show="connected && authenticated"></span>
     <a class="nav-link user-email" v-show="authenticated">{{user}}</a>
     <router-link to="logout" class="nav-link" v-show="authenticated">Log Out</router-link>
   </nav>
@@ -39,16 +38,6 @@ export default {
       content: "\f2be";
       color: $app-main;
       font-size: 1.25em;
-    }
-    &.connected {
-      border: 2px solid $robinhood-green;
-      border-radius: 50%;
-      width: 16px;
-      height: 16px;
-      background-image: url('../assets/images/rh-logo.png');
-      background-size: 24px 24px;
-      background-repeat: no-repeat;
-      background-position: center; 
     }
   }
 }

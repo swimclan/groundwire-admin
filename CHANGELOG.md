@@ -44,7 +44,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Integration with Robinhood auth token handling on api
 
-## [0.5.0] - 2017-10-30
+## [0.5.0] - 2017-10-29
 ### Added
 - App authentication routing based on authentication states
 - User email address in header on login
+
+## [0.5.1] - 2017-10-30
+### Added
+- Clean up logout page
