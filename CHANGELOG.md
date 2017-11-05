@@ -59,3 +59,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Chase coefficient component template
 - Stop margin component template
 - Fixed bug where refresh on dashboard was logging out
+
+## [0.6.1] - 2017-11-05
+### Added
+- Sidebar popout functionality and click events
+- Configurable dashboard components

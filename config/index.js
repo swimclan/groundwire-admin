@@ -25,7 +25,7 @@ config.set({
       dashboard: {
         title: 'Groundwire Trading Preferences',
         prefs: [
-          {name: 'account', title: 'Robinhhod Account', active: false, icon: '\uF2BE'},
+          {name: 'account', title: 'Robinhood Account', active: false, icon: '\uF2BE'},
           {name: 'risk', title: 'Risk Settings', active: false, icon: '\uF2C8'},
           {name: 'chase', title: 'Chase Coefficient', active: false, icon: '\uF201'},
           {name: 'screener', title: 'Stock Picks', active: false, icon: '\uF03A'},

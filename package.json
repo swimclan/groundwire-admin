@@ -1,6 +1,6 @@
 {
   "name": "trading-admin",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A user interface for configuring the trading app",
   "main": "entry.js",
   "scripts": {

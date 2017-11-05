@@ -16,7 +16,8 @@ const getters = {
   authenticated: state => state.authenticated,
   connected: state => state.connected,
   currentRoute: state => state.currentRoute,
-  activePref: state => state.preference
+  activePref: state => state.preference,
+  prefSelected: state => state.preference !== null
 }
 
 const mutations = {
@@ -26,7 +27,8 @@ const mutations = {
   setUser: (state, user) => state.user = user ? user : new String(),
   releaseUser: (state) => state.user = new String(),
   setRoute: (state, name) => state.currentRoute = name,
-  setActivePref: (state, pref) => state.preference = pref
+  toggleActivePref: (state, pref) => state.preference = state.preference !== pref ? pref : null,
+  releasePref: (state) => state.preference = null
 }
 
 // create the Vuex instance by combining the state and mutations objects

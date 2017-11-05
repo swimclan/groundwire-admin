@@ -8,7 +8,7 @@
           v-bind:icon="pref.icon"
           v-bind:title="pref.title"
           v-bind:active="activePref === pref.name"
-          v-on:click.native="setActivePref(pref.name)"
+          v-on:click.native.stop="toggleActivePref(pref.name)"
         />
       </li>
     </ul>
@@ -31,7 +31,7 @@
       }
     },
     methods: {
-      ...mapMutations(['setActivePref'])
+      ...mapMutations(['toggleActivePref'])
     },
     components: {Preference}
   }

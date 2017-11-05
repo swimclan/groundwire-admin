@@ -44,7 +44,7 @@ export default {
       font-weight: 100;
     }
     &.active {
-      border-bottom: 5px solid $app-main;
+      border-bottom: 5px solid $app-main-light;
     }
   }
 </style>

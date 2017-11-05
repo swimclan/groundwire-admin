@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" v-on:click="releasePref">
     <SidebarComponent />
     <HeaderComponent />
     <ContentComponent />
@@ -40,7 +40,7 @@
       ...mapGetters(['authenticated', 'connected'])
     },
     methods: {
-      ...mapMutations(['setAuth', 'setConnected', 'setUser', 'setRoute']),
+      ...mapMutations(['setAuth', 'setConnected', 'setUser', 'setRoute', 'releasePref']),
       authState(cb) {
         check((err, res) => {
           this.setAuth(res.authorized);

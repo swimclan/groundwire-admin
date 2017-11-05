@@ -25,6 +25,10 @@
   box-shadow: $x $y $diffusion $spread $color;
 }
 
+@mixin linear-gradient($deg: 90deg, $start: $app-main, $end: lighten($app-main, 60%)) {
+  linear-gradient: $deg $start $end;
+}
+
 @mixin navigation-link() {
   height: 88%;
   display: flex;
