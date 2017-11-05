@@ -12,10 +12,9 @@
 }
 
 @mixin box($width: 200px, $bg-color: $app-white) {
-  width: 100%;
-  height: 100%;
-  max-width: $width;
-  max-height: $width;
+  padding: 15px;
+  width: $width;
+  height: $width;
   background-color: $bg-color;
   @include shadow();
 }

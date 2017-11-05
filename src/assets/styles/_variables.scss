@@ -17,6 +17,7 @@ $robinhood-green: #5eca9c;
 $robinhood-dark: #000;
 
 /* layout */
+$screen-xl: 1280px;
 $screen-lg: 1024px;
 $screen-md: 768px;
 $screen-sm: 640px;
@@ -30,4 +31,5 @@ $content-height-sm: calc(100% - #{$header-height-sm});
 $font-sm: 10px;
 $font-md: 14px;
 $font-lg: 18px;
+$pref-width: 200px;
 

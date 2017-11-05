@@ -52,3 +52,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.5.1] - 2017-10-30
 ### Added
 - Clean up logout page
+
+## [0.6.0] - 2017-11-03
+### Added
+- Dashboard parent base component
+- Chase coefficient component template
+- Stop margin component template
+- Fixed bug where refresh on dashboard was logging out

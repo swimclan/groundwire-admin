@@ -18,6 +18,7 @@
 		created() {
       router.onReady(() => {
         this.setRoute(router.currentRoute.name);
+        this.authState(() => null);
       });
       router.beforeEach((to, from, next) => {
         if (to.name === 'dashboard') {

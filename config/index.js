@@ -21,6 +21,9 @@ config.set({
         headings: {
           main: 'Connect to Robinhood Account'
         }
+      },
+      dashboard: {
+        title: 'Groundwire Trading Preferences'
       }
     }
   },

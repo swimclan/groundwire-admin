@@ -2,7 +2,7 @@
   <nav id="side-nav">
     <router-link to="login" class="nav-link" v-show="!authenticated">Log In</router-link>
     <span class="nav-icon authenticated" v-show="authenticated"></span>
-    <a class="nav-link user-email" v-show="authenticated">{{user}}</a>
+    <a class="nav-link user-email" v-show="authenticated">{{username}}</a>
     <router-link to="logout" class="nav-link" v-show="authenticated">Log Out</router-link>
   </nav>
 </template>
@@ -15,7 +15,7 @@ export default {
     ...mapGetters([
       'authenticated',
       'connected',
-      'user'
+      'username'
     ])
   },
   methods: {
@@ -36,6 +36,8 @@ export default {
     margin-right: 5px;
     &.authenticated::before {
       content: "\f2be";
+      position: relative;
+      bottom: 2px;
       color: $app-main;
       font-size: 1.25em;
     }

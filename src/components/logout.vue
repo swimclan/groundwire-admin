@@ -30,13 +30,13 @@ export default {
 				return;
 			}
 			this.setAuth(false);
-			this.setUser(null);
+			this.releaseUser();
 		})
 	},
 	methods: {
 		...mapMutations([
 			'setAuth',
-			'setUser'
+			'releaseUser'
 		])
 	}
 }
