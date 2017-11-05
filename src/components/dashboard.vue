@@ -2,8 +2,15 @@
   <div class='dashboard-container'>
     <h3 class="dash-title">{{title}}</h3>
     <ul class="preferences-list">
-      <li><PrefC :active="true" /></li>
-      <li><PrefStop /></li>
+      <li v-for="pref in prefs">
+        <Preference
+          v-bind:name="pref.name"
+          v-bind:icon="pref.icon"
+          v-bind:title="pref.title"
+          v-bind:active="activePref === pref.name"
+          v-on:click.native="setActivePref(pref.name)"
+        />
+      </li>
     </ul>
   </div>
 </template>
@@ -12,21 +19,21 @@
 <script>
   import config from 'config';
   import {mapGetters, mapMutations} from 'vuex';
-  import PrefC from './pref_c';
-  import PrefStop from './pref_stop';
+  import Preference from './preference';
   export default {
     computed:  {
       ...mapGetters(['activePref'])
     },
     data() {
       return {
-        title: config.get('app.pages.dashboard.title')
+        title: config.get('app.pages.dashboard.title'),
+        prefs: config.get('app.pages.dashboard.prefs')
       }
     },
     methods: {
       ...mapMutations(['setActivePref'])
     },
-    components: {PrefC, PrefStop}
+    components: {Preference}
   }
 </script>
 
@@ -39,6 +46,8 @@
     height: 100%;
     .dash-title {
       text-align: center;
+      font-size: 2em;
+      color: $app-dark;
     }
     .preferences-list {
       padding: 0;

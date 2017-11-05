@@ -17,7 +17,6 @@
 <style lang="scss" scoped>
   @import '../assets/styles/index';
   .content-container {
-    padding: 20px 0;
     width: 100%;
     height: $content-height-lg;
     float: right;

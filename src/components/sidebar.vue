@@ -1,12 +1,13 @@
 <template>
-  <aside class="sidebar-container" v-bind:class="{ rh: currentRoute === 'robinhood' }"></aside>
+  <aside class="sidebar-container" v-bind:class="{ rh: currentRoute === 'robinhood', open }"></aside>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
 export default {
   computed: {
-    ...mapGetters(['currentRoute'])
+    ...mapGetters(['currentRoute', 'activePref']),
+    open: () => this.activePref != null
   }
 }
 </script>

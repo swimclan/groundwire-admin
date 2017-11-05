@@ -23,7 +23,15 @@ config.set({
         }
       },
       dashboard: {
-        title: 'Groundwire Trading Preferences'
+        title: 'Groundwire Trading Preferences',
+        prefs: [
+          {name: 'account', title: 'Robinhhod Account', active: false, icon: '\uF2BE'},
+          {name: 'risk', title: 'Risk Settings', active: false, icon: '\uF2C8'},
+          {name: 'chase', title: 'Chase Coefficient', active: false, icon: '\uF201'},
+          {name: 'screener', title: 'Stock Picks', active: false, icon: '\uF03A'},
+          {name: 'strategy', title: 'Stop Loss Strategy', active: false, icon: '\uF0AB'},
+          {name: 'activate', title: 'Activate', active: false, icon: '\uF011'}
+        ]
       }
     }
   },
