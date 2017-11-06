@@ -76,6 +76,11 @@ config.set({
       url: 'https://api.groundwire.co/v1/user/tokenize',
       method: 'GET',
       options: {}
+    },
+    strategies: {
+      url: 'https://api.groundwire.co/v1/strategy',
+      method: 'GET',
+      options: {}
     }
   }
 });

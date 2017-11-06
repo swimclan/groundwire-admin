@@ -12,6 +12,7 @@
   import SidebarComponent from './sidebar';
   import ContentComponent from './content';
   import {check} from 'services/authentication';
+  import {strategies} from 'services/preferences';
   import {mapMutations} from 'vuex';
   import {mapGetters} from 'vuex';
   export default {
@@ -19,6 +20,7 @@
       router.onReady(() => {
         this.setRoute(router.currentRoute.name);
         this.authState(() => null);
+        this.strategyState(() => null);
       });
       router.beforeEach((to, from, next) => {
         if (to.name === 'dashboard') {
@@ -29,7 +31,7 @@
             if (this.authenticated && !this.connected) {
               return next('/robinhood');
             }
-            return next();
+            return this.strategyState(() => next());
           });
         } else {
           return next();
@@ -40,12 +42,28 @@
       ...mapGetters(['authenticated', 'connected'])
     },
     methods: {
-      ...mapMutations(['setAuth', 'setConnected', 'setUser', 'setRoute', 'releasePref']),
+      ...mapMutations(
+        [
+          'setAuth',
+          'setConnected',
+          'setUser',
+          'setRoute',
+          'releasePref',
+          'setStrategies'
+        ]),
       authState(cb) {
         check((err, res) => {
           this.setAuth(res.authorized);
           this.setConnected(res.connected);
           this.setUser(res.user);
+          cb();
+        });
+      },
+      strategyState(cb) {
+        strategies((err, res) => {
+          if (!err) {
+            this.setStrategies(res);
+          }
           cb();
         });
       }
