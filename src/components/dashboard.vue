@@ -3,7 +3,7 @@
     <h3 class="dash-title">{{title}}</h3>
     <ul class="preferences-list">
       <li v-for="pref in prefs">
-        <Preference
+        <preference
           v-bind:name="pref.name"
           v-bind:icon="pref.icon"
           v-bind:title="pref.title"

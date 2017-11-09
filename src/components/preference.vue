@@ -36,6 +36,8 @@ export default {
           font-family: FontAwesome;
           content: attr(data-icon);
           font-style: normal;
+          font-weight: 100;
+          text-shadow: 2px 2px 9px $app-gray;
         }
       }
     }

@@ -3,13 +3,18 @@
     <div class="close-container">
       <button class="close-button" v-on:click.stop="releasePref"></button>
     </div>
+    <div class="preference-form-container">
+      <account-form />
+    </div>
   </aside>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
 import {mapMutations} from 'vuex';
+import AccountForm from 'components/forms/account';
 export default {
+  components: {AccountForm},
   computed: {
     ...mapGetters(['currentRoute', 'activePref', 'prefSelected']),
   },
@@ -26,19 +31,20 @@ export default {
   .sidebar-container {
     width: 0%;
     height: 100%;
-    background-color: $app-main-light;
+    background-color: $app-main;
     opacity: .9;
     position: fixed;
     left: 0;
     transition: width .3s;
     transition-timing-function: ease;
+    overflow: hidden;
     &.rh {
       background-color: $robinhood-green
     }
     &.open {
       animation-name: drawer;
       animation-duration: .3s;
-      width: 33%;
+      width: $sidebar-width-lg;
     }
     &.close {
       width: 0%;
@@ -67,9 +73,9 @@ export default {
   }
   @keyframes drawer {
     0%    {width: 0;}
-    50%   {width: 34%;}
-    80%   {width: 32%;}
-    100%  {width: 33%;}
+    50%   {width: $sidebar-width-lg + 2%;}
+    80%   {width: $sidebar-width-lg - 2%;}
+    100%  {width: $sidebar-width-lg;}
   }
 </style>
 

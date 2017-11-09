@@ -1,8 +1,8 @@
 <template>
   <header class="header-container">
     <div class="ghost-bar"></div>
-    <Navbar />
-    <Authbar />
+    <navbar />
+    <authbar />
   </header>
 </template>
 

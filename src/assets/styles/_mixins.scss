@@ -92,3 +92,43 @@
     background-color: lighten($background-color, 20%);
   }
 }
+
+@mixin control-input-text($width: 80%, $height: 50px, $border-color: $app-white, $border-width: 2px, $text-color: $app-white, $background: none, $disabled-text-color: $app-dark, $disabled-background: $app-white) {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 1.5em;
+  padding-left: 10px;
+  width: $width;
+  height: $height;
+  outline: none;
+  border: $border-width solid $border-color;
+  background: $background;
+  color: $text-color;
+  &:disabled {
+    font-style: italic;
+    color: $disabled-text-color;
+    background-color: $disabled-background;
+    opacity: 0.5;
+  }
+}
+
+@mixin control-slider-bar($height: 50px, $border-color: $app-white, $border-width: 2px, $background: none) {
+  position: relative;
+  top: 25px;
+  width: auto;
+  height: $height;
+  border: $border-width solid $border-color;
+  background: $background;
+}
+
+@mixin flex-center-stack() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-row-stack() {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

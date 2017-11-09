@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.0] - 2017-11-08
+### Added
+- Generic text box form control
+- Generic slider control
+- Scaling and fixed denomination functions for slider display
+
 ## [0.6.2] - 2017-11-06
 ### Added
 - GET Strategies integration with server

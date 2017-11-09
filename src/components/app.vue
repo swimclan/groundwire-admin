@@ -1,8 +1,8 @@
 <template>
   <div class="app-container" v-on:click="releasePref">
-    <SidebarComponent />
-    <HeaderComponent />
-    <ContentComponent />
+    <sidebar-component />
+    <header-component />
+    <content-component />
   </div>
 </template>
 
