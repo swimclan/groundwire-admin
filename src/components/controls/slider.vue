@@ -1,10 +1,10 @@
 <template>
-  <div class="slider-container" @mouseleave="dragleave" @mousemove="drag" @mouseup="dragend" @mouseenter="dragend">
+  <div class="control-slider-container" @mouseleave="dragleave" @mousemove="drag" @mouseup="dragend" @mouseenter="dragend">
     <div class="slide-bar" ref="slider">
       <div class="fader" v-bind:style="offsetstyle" @mousedown.prevent="dragstart" @mouseup="dragend" ref="fader"></div>
     </div>
-    <div class="text-container">
-      <control-text :model="m" :disabled="true" />
+    <div class="text-container" :data-preunit="preunit" :data-postunit="postunit">
+      <control-text class="small" v-model="m" :disabled="true" />
     </div>
   </div>
 </template>
@@ -15,10 +15,39 @@ import {scale, fixedNotation} from 'tools/utils';
 import config from 'config';
 export default {
   components: {ControlText},
-  props: ['model', 'range', 'places'],
+  props: {
+    value: {
+      default: 0,
+      type: Number
+    },
+    range: {
+      default: [],
+      type: Array
+    },
+    places: {
+      default: 0,
+      type: Number
+    },
+    preunit: {
+      default: '',
+      type: String
+    },
+    postunit: {
+      default: '',
+      type: String
+    },
+    factor: {
+      default: 1,
+      type: Number
+    }
+  },
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
   data() {
     return {
-      m: fixedNotation(this.range[0], this.places, config.get('utils.denominations')),
+      m: `${this.preunit}${this.preunit ? ' ' : ''}${this.processDisplay(this.range[0])} ${this.postunit}`,
       dragrestart: true,
       dragstate: false,
       dragorigin: 0,
@@ -30,6 +59,7 @@ export default {
       faderWidth: 0,
       maxDrag: 0,
       boundryPad: 0,
+      val: this.value
     }
   },
   methods: {
@@ -55,10 +85,21 @@ export default {
         } else {
           this.dragstop = false;
           this.dragoffset = nextOffset;
-          this.m = fixedNotation(scale(0, this.maxDrag, this.range[0], this.range[1], this.dragoffset), this.places, config.get('utils.denominations'));
+          let val = scale(0, this.maxDrag, this.range[0], this.range[1], this.dragoffset)
+          let displaynum = this.processDisplay(val);
+          this.m = `${this.preunit}${this.preunit ? ' ' : ''}${displaynum} ${this.postunit}`;
           this.offsetstyle = {left: `${this.dragoffset}px`};
+          this.updateValue(val)
         }
       }
+    },
+    updateValue: function(val) {
+      this.val = val;
+      this.$emit('input', val);
+    },
+    processDisplay(val) {
+      let adjustedVal = val * this.factor;
+      return fixedNotation(adjustedVal, this.places, config.get('utils.denominations'));
     }
   }
 }
@@ -66,14 +107,13 @@ export default {
 
 <style lang="scss" scoped>
   @import '../../assets/styles/index';
-  .slider-container {
-    width: 80%;
+  .control-slider-container {
+    width: 100%;
     padding: 10px 0;
-    margin: 0 auto;
     @include flex-row-stack();
     .slide-bar {
+      flex: 8;
       box-sizing: border-box;
-      flex: 4;
       @include control-slider-bar($height: 1px, $background: $app-white, $border-width: 1px);
       .fader {
         position: relative;
@@ -87,20 +127,9 @@ export default {
       }
     }
     .text-container {
-      flex: 1;
-      .control-text-input {
-        font-size: 1.2em;
-        padding: 0;
-        text-align: center;
-        width: 100%;
-        background: none;
-        border: none;
-        &:disabled {
-          color: $app-white;
-          font-style: normal;
-          opacity: 1;
-        }
-      }
+      display: flex;
+      align-items: center;
+      flex: 3;
     }
   }
 </style>

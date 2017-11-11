@@ -19,8 +19,12 @@
 		created() {
       router.onReady(() => {
         this.setRoute(router.currentRoute.name);
-        this.authState(() => null);
-        this.strategyState(() => null);
+        this.authState(() => {
+          if (!this.authenticated && !this.connected) {
+            return router.push('/login');
+          }
+          this.strategyState(() => null);
+        });
       });
       router.beforeEach((to, from, next) => {
         if (to.name === 'dashboard') {

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2017-11-11
+### Added
+- Generic toggle button control
+- units for slider text boxes
+
 ## [0.7.0] - 2017-11-08
 ### Added
 - Generic text box form control
