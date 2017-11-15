@@ -1,6 +1,13 @@
 <template>
   <div class="control-toggle-container">
-    <control-button v-for="opt in opts" :class="{active: isActive(opt.id)}" :options="opt" :callback="setToggle" />
+    <control-button
+      v-for="opt in opts"
+      :class="{active: isActive(opt.id)}"
+      :options="opt"
+      :callback="setToggle"
+      v-bind:data="opt"
+      v-bind:key="opt.id"
+    />
   </div>
 </template>
 

@@ -14,6 +14,10 @@
         {label: 'Profit', value: 'profit', id: 3}
       ]"
     />
+    <div class="switch-container">
+      <control-switch v-model="activate" :labels="{on: 'on', off: 'off'}" />
+      <control-switch v-model="transaction" :labels="{on: 'cash', off: 'credit'}"/>
+    </div>
   </div>
 </template>
 
@@ -21,17 +25,20 @@
 import ControlText from 'components/controls/text';
 import ControlSlider from 'components/controls/slider';
 import ControlToggle from 'components/controls/toggle';
+import ControlSwitch from 'components/controls/switch';
 export default {
-  components: {ControlText, ControlSlider, ControlToggle},
+  components: {ControlText, ControlSlider, ControlToggle, ControlSwitch},
   data() {
     return {
       fname: 'These',
       lname: 'Are',
       email: 'Text Boxes',
-      marketcap: 0,
+      marketcap: 3,
       ret: 0,
       stopmargin: 0,
-      strategy: null
+      strategy: null,
+      activate: false,
+      transaction: false
     }
   }
 }
@@ -43,6 +50,11 @@ export default {
     width: 80%;
     margin: 0 auto;
     @include flex-center-stack();
+    .switch-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 </style>
 

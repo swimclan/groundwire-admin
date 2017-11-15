@@ -1,7 +1,7 @@
 <template>
   <nav id="main-nav">
-    <router-link to="dashboard" class="nav-link">Dashboard</router-link>
-    <router-link to="robinhood" class="nav-link">Robinhood</router-link>
+    <router-link :to="{name: 'dashboard'}" class="nav-link">Dashboard</router-link>
+    <router-link :to="{name: 'robinhood'}" class="nav-link">Robinhood</router-link>
   </nav>
 </template>
 

@@ -126,6 +126,7 @@
     input {
       width: $small-width;
       text-align: center;
+      @include basetext($reduce: 0.2em);
       &:disabled {
         font-style: normal;
         color: $text-color;

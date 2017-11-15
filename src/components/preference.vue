@@ -1,12 +1,12 @@
 <template>
-  <div class="preference-container dash-box" v-bind:class="{active: active}">
+  <router-link :to="{name: 'preference', path: '/dashboard', params: {id: name}}" class="preference-container dash-box" v-bind:class="{active: active}" tag="div">
     <div class="icon-container">
       <i class="icon" :data-icon="icon"></i>
     </div>
     <div class="title-container">
       <span class="preference-title">{{title}}</span>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -18,6 +18,8 @@ export default {
 <style lang="scss">
   @import '../assets/styles/index';
   .preference-container {
+    text-decoration: none;
+    background-color: $app-white;
     box-sizing: border-box;
     display: flex;
     justify-content: center;

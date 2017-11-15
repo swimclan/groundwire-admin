@@ -1,12 +1,14 @@
-<template>
-  <aside class="sidebar-container" v-on:click.stop="doNothing" v-bind:class="{ rh: currentRoute === 'robinhood', open: prefSelected, close: !prefSelected }">
-    <div class="close-container">
-      <button class="close-button" v-on:click.stop="releasePref"></button>
-    </div>
-    <div class="preference-form-container">
-      <account-form />
-    </div>
-  </aside>
+  <template>
+  <transition name="slide-fade">
+    <aside class="sidebar-container">
+      <div class="close-container">
+        <router-link :to="{name: 'dashboard'}" class="close-button" tag="div"></router-link>
+      </div>
+      <div class="preference-form-container">
+        <account-form />
+      </div>
+    </aside>
+  </transition>
 </template>
 
 <script>
@@ -19,8 +21,7 @@ export default {
     ...mapGetters(['currentRoute', 'activePref', 'prefSelected']),
   },
   methods: {
-    ...mapMutations(['releasePref']),
-    doNothing: () => null
+    ...mapMutations(['releasePref'])
   }
 }
 </script>
@@ -29,22 +30,19 @@ export default {
 <style lang="scss" scoped>
   @import '../assets/styles/index';
   .sidebar-container {
-    width: 0%;
     height: 100%;
     background-color: $app-main;
     opacity: .9;
+    width: $sidebar-width-lg;
     position: fixed;
     left: 0;
-    transition: width .3s;
-    transition-timing-function: ease;
     overflow: hidden;
     &.rh {
       background-color: $robinhood-green
     }
-    &.open {
+    &.slide-fade-enter-active {
       animation-name: drawer;
-      animation-duration: .3s;
-      width: $sidebar-width-lg;
+      animation-duration: .2s;
     }
     &.close {
       width: 0%;
@@ -53,6 +51,7 @@ export default {
       display: flex;
       justify-content: flex-end;
       .close-button {
+        text-decoration: none;
         background: none;
         outline: none;
         border: none;
@@ -73,8 +72,8 @@ export default {
   }
   @keyframes drawer {
     0%    {width: 0;}
-    50%   {width: $sidebar-width-lg + 2%;}
-    80%   {width: $sidebar-width-lg - 2%;}
+    50%   {width: $sidebar-width-lg + 1%;}
+    80%   {width: $sidebar-width-lg - 0.5%;}
     100%  {width: $sidebar-width-lg;}
   }
 </style>

@@ -1,14 +1,15 @@
 <template>
   <div class='dashboard-container'>
+    <router-view></router-view>
     <h3 class="dash-title">{{title}}</h3>
     <ul class="preferences-list">
-      <li v-for="pref in prefs">
+      <li v-for="pref in prefs" v-bind:data="pref" v-bind:key="pref.name">
         <preference
           v-bind:name="pref.name"
           v-bind:icon="pref.icon"
           v-bind:title="pref.title"
           v-bind:active="activePref === pref.name"
-          v-on:click.native.stop="toggleActivePref(pref.name)"
+          v-on:click.native.stop="linkPref(pref.name)"
         />
       </li>
     </ul>
@@ -31,7 +32,15 @@
       }
     },
     methods: {
-      ...mapMutations(['toggleActivePref'])
+      ...mapMutations(['toggleActivePref']),
+      linkPref(name) {
+        this.toggleActivePref(name);
+        if (this.activePref) {
+          this.$router.push({name: 'preference', params: {id: name}});
+        } else {
+          this.$router.push({name: 'dashboard'});
+        }
+      }
     },
     components: {Preference}
   }

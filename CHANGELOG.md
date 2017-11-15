@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.9.0] - 2017-11-11
+### Added
+- Generic switch control
+- Sidebar as a page in the router with active animation
+
 ## [0.8.0] - 2017-11-11
 ### Added
 - Generic toggle button control

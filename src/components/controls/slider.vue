@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      m: `${this.preunit}${this.preunit ? ' ' : ''}${this.processDisplay(this.range[0])} ${this.postunit}`,
+      m: `${this.preunit}${this.preunit ? ' ' : ''}${this.processDisplay(this.value > this.range[0] ? this.value : this.range[0])} ${this.postunit}`,
       dragrestart: true,
       dragstate: false,
       dragorigin: 0,
