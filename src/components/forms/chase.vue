@@ -1,3 +1,3 @@
 <template>
-  <h1>Risk SHite</h1>
+  <h1>Chase vue</h1>
 </template>

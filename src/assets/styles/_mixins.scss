@@ -151,7 +151,7 @@
 }
 
 @mixin control-toggle($background: none, $border: 2px solid $app-white) {
-  @include basetext($reduce: 0.2em);
+  @include basetext($reduce: 0.4em);
   padding: 5px;
   border: $border;
   background: $background;
@@ -182,4 +182,23 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@mixin pref-form($width: 80%) {
+  h1 {
+    @include basetext();
+  }
+  width: $width;
+  margin: 0 auto;
+  @include flex-center-stack();
+}
+
+@mixin pref-form-description() {
+  @include basetext($reduce: 0.5em);
+}
+
+@mixin preference-save-button($width: 100%) {
+  width: $width;
+  margin: 0 auto;
+  @include basetext();
 }

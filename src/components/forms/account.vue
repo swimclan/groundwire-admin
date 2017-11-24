@@ -1,5 +1,5 @@
 <template>
-  <div class="preference-form">
+  <div class="preference-form-container">
     <control-text v-model="fname" :eid="'text-fname'" :elabel="'First Name'" />
     <control-text v-model="lname" :eid="'text-lname'" :elabel="'Last Name'" />
     <control-text v-model="email" :eid="'text-email'" :elabel="'Email'" />
@@ -46,10 +46,8 @@ export default {
 
 <style lang="scss" scoped>
   @import '../../assets/styles/index';
-  .preference-form {
-    width: 80%;
-    margin: 0 auto;
-    @include flex-center-stack();
+  .preference-form-container {
+    @include pref-form();
     .switch-container {
       display: flex;
       justify-content: space-between;

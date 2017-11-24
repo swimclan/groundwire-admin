@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: ['whatwg-fetch', './entry.js'],
+  entry: ['babel-polyfill', 'whatwg-fetch', './entry.js'],
   output: {
     path: __dirname + '/dist',
     filename: "bundle.js"

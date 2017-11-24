@@ -1,6 +1,7 @@
 // store.js
 import Vue from 'vue';
 import Vuex from 'vuex';
+import {strategies, preferences, createPreferences} from 'services/preferences';
 
 // the root, initial state object
 const state = {
@@ -9,7 +10,8 @@ const state = {
   currentRoute: null,
   user: new String(),
   preference: null,
-  strategies: []
+  strategies: [],
+  preferences: {}
 }
 const getters = {
   user: state => state.user,
@@ -19,7 +21,8 @@ const getters = {
   currentRoute: state => state.currentRoute,
   activePref: state => state.preference,
   prefSelected: state => state.preference !== null,
-  strategies: state => state.strategies
+  strategies: state => state.strategies,
+  preferences: state => state.preferences
 }
 
 const mutations = {
@@ -31,7 +34,22 @@ const mutations = {
   setRoute: (state, name) => state.currentRoute = name,
   toggleActivePref: (state, pref) => state.preference = state.preference !== pref ? pref : null,
   releasePref: (state) => state.preference = null,
-  setStrategies: (state, strategies) => state.strategies = strategies
+  setStrategies: (state, strategies) => state.strategies = strategies,
+  setPreferences: (state, preferences) => state.preferences = preferences,
+  setPrefProp: (state, {prop, val}) => state.preferences[prop] = val
+}
+
+const actions = {
+  async setStrategies ({ commit }) {
+    commit ('setStrategies', await strategies());
+  },
+  async setPreferences ({ commit }) {
+    commit ('setPreferences', await preferences());
+  },
+  async savePreferences ({ commit, state }, cb) {
+    commit ('setPreferences', await createPreferences(state.preferences));
+    cb(state.preferences)
+  }
 }
 
 // create the Vuex instance by combining the state and mutations objects
@@ -39,5 +57,6 @@ const mutations = {
 export const store =  new Vuex.Store({
   state,
   getters,
-  mutations
+  mutations,
+  actions
 })

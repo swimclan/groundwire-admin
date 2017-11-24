@@ -15,21 +15,25 @@
 import ControlButton from 'components/controls/button';
 export default {
   components: {ControlButton},
-  props: ['options'],
+  props: ['options', 'vmodel'],
   model: {
-    prop: 'out',
+    prop: 'vmodel',
     event: 'input'
   },
   data() {
     return {
       opts: this.options,
-      active: null
+      active: this.vmodel
     }
+  },
+  created() {
+    this.active = this.vmodel;
   },
   methods: {
     setToggle: function(e) {
-      this.active = e.target.value;
-      this.$emit('input', e.target.value);
+      let ret = parseInt(e.target.value);
+      this.active = ret;
+      this.$emit('input', ret);
     },
     isActive(val) {
       return this.active == val;

@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{name: 'preference', path: '/dashboard', params: {id: name}}" class="preference-container dash-box" v-bind:class="{active: active}" tag="div">
+  <router-link :to="{name: 'preference', path: `/dashboard/preference`, params: {id: name}}" class="preference-container dash-box" v-bind:class="{active: active}" tag="div">
     <div class="icon-container">
       <i class="icon" :data-icon="icon"></i>
     </div>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  props: ['active', 'name', 'title', 'icon']
+  props: ['active', 'name', 'title', 'icon', 'description']
 }
 </script>
 

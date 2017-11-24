@@ -1,11 +1,11 @@
   <template>
   <transition name="slide-fade">
     <aside class="sidebar-container">
-      <div class="close-container">
+      <div class="close-container" v-on:click="releasePref">
         <router-link :to="{name: 'dashboard'}" class="close-button" tag="div"></router-link>
       </div>
       <div class="preference-form-container">
-        <account-form />
+        <router-view></router-view>
       </div>
     </aside>
   </transition>
@@ -14,9 +14,8 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapMutations} from 'vuex';
-import AccountForm from 'components/forms/account';
+import forms from 'components/forms';
 export default {
-  components: {AccountForm},
   computed: {
     ...mapGetters(['currentRoute', 'activePref', 'prefSelected']),
   },

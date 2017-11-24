@@ -3,13 +3,14 @@
     <router-view></router-view>
     <h3 class="dash-title">{{title}}</h3>
     <ul class="preferences-list">
-      <li v-for="pref in prefs" v-bind:data="pref" v-bind:key="pref.name">
+      <li v-for="prefkey in prefkeys" v-bind:data="prefkey" v-bind:key="prefs[prefkey].name">
         <preference
-          v-bind:name="pref.name"
-          v-bind:icon="pref.icon"
-          v-bind:title="pref.title"
-          v-bind:active="activePref === pref.name"
-          v-on:click.native.stop="linkPref(pref.name)"
+          v-bind:name="prefs[prefkey].name"
+          v-bind:icon="prefs[prefkey].icon"
+          v-bind:title="prefs[prefkey].title"
+          v-bind:description="prefs[prefkey].description"
+          v-bind:active="activePref === prefs[prefkey].name"
+          v-on:click.native.stop="linkPref(prefs[prefkey].name)"
         />
       </li>
     </ul>
@@ -19,24 +20,31 @@
 
 <script>
   import config from 'config';
-  import {mapGetters, mapMutations} from 'vuex';
+  import {mapGetters, mapMutations, mapActions} from 'vuex';
   import Preference from './preference';
   export default {
+    created() {
+      this.setStrategies();
+      this.setPreferences();
+    },
     computed:  {
-      ...mapGetters(['activePref'])
+      ...mapGetters(['activePref']),
     },
     data() {
       return {
         title: config.get('app.pages.dashboard.title'),
-        prefs: config.get('app.pages.dashboard.prefs')
+        prefs: config.get('app.pages.dashboard.prefs'),
+        prefkeys: Object.keys(config.get('app.pages.dashboard.prefs'))
       }
     },
     methods: {
       ...mapMutations(['toggleActivePref']),
+      ...mapActions(['setStrategies', 'setPreferences']),
       linkPref(name) {
         this.toggleActivePref(name);
         if (this.activePref) {
-          this.$router.push({name: 'preference', params: {id: name}});
+          let targetPrefRoute = this.activePref;
+          this.$router.replace({name: targetPrefRoute});
         } else {
           this.$router.push({name: 'dashboard'});
         }

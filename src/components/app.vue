@@ -11,9 +11,7 @@
   import SidebarComponent from './sidebar';
   import ContentComponent from './content';
   import {check} from 'services/authentication';
-  import {strategies} from 'services/preferences';
-  import {mapMutations} from 'vuex';
-  import {mapGetters} from 'vuex';
+  import {mapMutations, mapGetters} from 'vuex';
   export default {
 		created() {
       router.onReady(() => {
@@ -22,7 +20,6 @@
           if (!this.authenticated && !this.connected) {
             return router.push('/login');
           }
-          this.strategyState(() => null);
         });
       });
       router.beforeEach((to, from, next) => {
@@ -34,8 +31,12 @@
             if (this.authenticated && !this.connected) {
               return next('/robinhood');
             }
-            return this.strategyState(() => next());
+            this.releasePref();
+            return next();
           });
+        } else if (from.path.search(/\/preference\//) !== -1 && to.path.search(/\/preference\//) !== -1) {
+          this.toggleActivePref(to.name);
+          return next();
         } else {
           return next();
         }
@@ -51,22 +52,14 @@
           'setConnected',
           'setUser',
           'setRoute',
-          'releasePref',
-          'setStrategies'
-        ]),
+          'toggleActivePref',
+          'releasePref'
+      ]),
       authState(cb) {
         check((err, res) => {
           this.setAuth(res.authorized);
           this.setConnected(res.connected);
           this.setUser(res.user);
-          cb();
-        });
-      },
-      strategyState(cb) {
-        strategies((err, res) => {
-          if (!err) {
-            this.setStrategies(res);
-          }
           cb();
         });
       }

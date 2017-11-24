@@ -1,6 +1,6 @@
 <template>
   <button class="control-toggle-button" @click.prevent="toggleActive" :value="options.id">
-    {{options.label}}      
+    {{options.title}}      
   </button>
 </template>
 

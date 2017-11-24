@@ -1,17 +1,15 @@
 import config from 'config';
 import {merge} from 'lodash';
-import {encode} from 'tools/utils';
+import {encode, createForm} from 'tools/utils';
 
 export const login = (email, password, cb) => {
   let ret = {};
-  let formdata = new FormData();
-  formdata.append('emailAddress', email);
-  formdata.append('password', password);
+  let form = createForm({emailAddress: email, password: password});
   fetch(config.get('ajax.login.url'), {
     method: config.get('ajax.login.method'),
     credentials: 'include',
     mode: 'cors',
-    body: formdata
+    body: form
   })
   .then((res) => {
     switch (res.status) {

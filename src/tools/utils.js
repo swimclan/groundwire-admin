@@ -15,3 +15,11 @@ export const fixedNotation = (num, places, map) => {
   let denom = map[components[1] - factor];
   return `${value}${denom}`;
 }
+
+export const createForm = (form) => {
+  let formData = new FormData();
+  Object.keys(form).forEach((key) => {
+    formData.append(key, form[key]);
+  });
+  return formData;
+}
