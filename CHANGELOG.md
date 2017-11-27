@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.11.0] - 2017-11-26
+### Added
+- Setting preferences and saving to the database
+- Managing connected robinhood account from the dashboard
+- Dispatching reset events from control components
+
 ## [0.10.0] - 2017-11-24
 ### Added
 - Setting strategy and saving to the db

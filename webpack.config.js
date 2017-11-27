@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.s[a|c]ss$/,
         use: [{
-          loader: "style-loader" // creates style nodes from JS strings
+          loader: "vue-style-loader" // creates style nodes from JS strings
         }, {
           loader: "css-loader" // translates CSS into CommonJS
         }, {

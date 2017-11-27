@@ -100,3 +100,21 @@ export const tokenize = ({username, password}, cb) => {
     cb(err, ret);
   });
 }
+
+export const disconnect = () => {
+  return new Promise((resolve, reject) => {
+    fetch(config.get('ajax.disconnect.url'), {
+      method: config.get('ajax.disconnect.method'),
+      credentials: 'include',
+      mode: 'cors'
+    }).then((res) => {
+      res.json().then((json) => {
+        return resolve(json)
+      }).catch((err) => {
+        reject(err);
+      });    
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}

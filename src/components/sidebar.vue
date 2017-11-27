@@ -1,10 +1,10 @@
   <template>
   <transition name="slide-fade">
-    <aside class="sidebar-container">
+    <aside class="sidebar-container" ref="sidebar">
       <div class="close-container" v-on:click="releasePref">
         <router-link :to="{name: 'dashboard'}" class="close-button" tag="div"></router-link>
       </div>
-      <div class="preference-form-container">
+      <div class="form-container">
         <router-view></router-view>
       </div>
     </aside>
@@ -20,11 +20,16 @@ export default {
     ...mapGetters(['currentRoute', 'activePref', 'prefSelected']),
   },
   methods: {
-    ...mapMutations(['releasePref'])
+    ...mapMutations(['releasePref']),
+    onTransitionEnd(e) {
+      this.$emit('animationcomplete', e);
+    }
+  },
+  mounted() {
+    this.$refs.sidebar.addEventListener('animationend', this.onTransitionEnd);
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
   @import '../assets/styles/index';
@@ -35,13 +40,18 @@ export default {
     width: $sidebar-width-lg;
     position: fixed;
     left: 0;
-    overflow: hidden;
+    overflow: scroll;
     &.rh {
       background-color: $robinhood-green
     }
     &.slide-fade-enter-active {
       animation-name: drawer;
       animation-duration: .2s;
+    }
+    &.slide-fade-leave-active {
+      animation-name: drawer;
+      animation-duration: .2s;
+      animation-direction: reverse;
     }
     &.close {
       width: 0%;
@@ -71,8 +81,8 @@ export default {
   }
   @keyframes drawer {
     0%    {width: 0;}
-    50%   {width: $sidebar-width-lg + 1%;}
-    80%   {width: $sidebar-width-lg - 0.5%;}
+    50%   {width: $sidebar-width-lg + 10px;}
+    80%   {width: $sidebar-width-lg - 5px;}
     100%  {width: $sidebar-width-lg;}
   }
 </style>

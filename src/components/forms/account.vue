@@ -1,44 +1,70 @@
 <template>
+  <transition name="fade">
   <div class="preference-form-container">
-    <control-text v-model="fname" :eid="'text-fname'" :elabel="'First Name'" />
-    <control-text v-model="lname" :eid="'text-lname'" :elabel="'Last Name'" />
-    <control-text v-model="email" :eid="'text-email'" :elabel="'Email'" />
-    <control-slider :range="[0, 5]" :places="2" v-model="marketcap" />
-    <control-slider :range="[100, 500000]" :places="1" v-model="ret" :preunit="'$'" />
-    <control-slider :range="[0, 0.05]" :places="2" v-model="stopmargin" :postunit="'%'" :factor="100" />
-    <control-toggle
-      v-model="strategy"
-      :options="[
-        {label: 'Best Price', value: 'bestprice', id: 1},
-        {label: 'Slope', value: 'slope', id: 2},
-        {label: 'Profit', value: 'profit', id: 3}
-      ]"
-    />
-    <div class="switch-container">
-      <control-switch v-model="activate" :labels="{on: 'on', off: 'off'}" />
-      <control-switch v-model="transaction" :labels="{on: 'cash', off: 'credit'}"/>
-    </div>
+    <section class="preference-form-heading-container">
+      <h1 class="preference-form-heading">{{ heading }}</h1>
+    </section>
+    <section class="preference-form-description-container">
+    <p class="preference-form-description">{{ description }}</p>
+    </section>
+    <section class="preference-form-controls-container">
+      <div class="pref-control inline">
+        <p class="pref-control-label">Status:</p>
+        <div class="pref-control-input" :data-connected="connected ?  icons.connected : icons.disconnected" >
+          {{ connected ?  labels.connected : labels.disconnected }}
+        </div>
+      </div>
+    </section>
+    <section class="preference-form-buttons">
+      <div class="preference-form-connect-container">
+        <control-button
+          :options="{id: 0, title: connected ? labels.disconnect : labels.connect, name: 'connectionChange'}"
+          :callback="handleConnectionChange"
+        />
+      </div>
+    </section>
   </div>
+  </transition>
 </template>
 
 <script>
-import ControlText from 'components/controls/text';
-import ControlSlider from 'components/controls/slider';
-import ControlToggle from 'components/controls/toggle';
-import ControlSwitch from 'components/controls/switch';
+import ControlButton from 'components/controls/button';
+import config from 'config';
+import {mapGetters, mapActions} from 'vuex';
 export default {
-  components: {ControlText, ControlSlider, ControlToggle, ControlSwitch},
+  components: {ControlButton},
+  computed: {
+    ...mapGetters(['connected'])
+  },
   data() {
     return {
-      fname: 'These',
-      lname: 'Are',
-      email: 'Text Boxes',
-      marketcap: 3,
-      ret: 0,
-      stopmargin: 0,
-      strategy: null,
-      activate: false,
-      transaction: false
+      heading: config.get('app.pages.dashboard.prefs.account.title'),
+      description: config.get('app.pages.dashboard.prefs.account.description'),
+      labels: {
+        connected: config.get('app.ui.labels.connected'),
+        disconnected: config.get('app.ui.labels.disconnected'),
+        connect: config.get('app.ui.labels.connect'),
+        disconnect: config.get('app.ui.labels.disconnect')
+      },
+      icons: {
+        connected: config.get('app.ui.icons.connected'),
+        disconnected: config.get('app.ui.icons.disconnected')
+      }
+    }
+  },
+  created() {
+    this.$parent.$on('animationcomplete', (e) => {
+      this.$emit('animationcomplete', e);
+    });
+  },
+  methods: {
+    ...mapActions(['disconnect']),
+    handleConnectionChange() {
+      let nextStep = {
+        true: () => this.disconnect(),
+        false: () => this.$router.push({name: 'robinhood'})
+      }
+      return nextStep[this.connected].apply(this);
     }
   }
 }
@@ -47,13 +73,53 @@ export default {
 <style lang="scss" scoped>
   @import '../../assets/styles/index';
   .preference-form-container {
+    &.fade-enter-active {
+      animation-name: fades;
+      animation-duration: 0.5s;
+    }
     @include pref-form();
-    .switch-container {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
+    section {
+      @include preference-section();
+      .preference-form-description {
+        @include pref-form-description();
+      }
+      &.preference-form-heading-container {
+        @include pref-form-heading();
+      }
+      &.preference-form-controls-container {
+        .pref-control {
+          padding: 0.7em 0;
+          .pref-control-label, .pref-control-input {
+            margin: 0;
+            @include basetext($enlarge: 0.3em);
+          }
+          &.inline {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            .pref-control-label {
+              margin-right: 10px;
+            }
+          }
+          .pref-control-input::after {
+            font-family: FontAwesome;
+            content: attr(data-connected);
+          }
+        }
+      }
+      &.preference-form-buttons {
+        display: flex;
+        justify-content: space-between; 
+        .preference-form-connect-container {
+          width: 100%;
+          button {
+            @include preference-button();
+          }
+        }     
+      }
     }
   }
+  @include fades();
 </style>
 
 

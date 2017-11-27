@@ -25,11 +25,8 @@
       router.beforeEach((to, from, next) => {
         if (to.name === 'dashboard') {
           this.authState(() => {
-            if (!this.authenticated && !this.connected) {
+            if (!this.authenticated) {
               return next('/login');
-            }
-            if (this.authenticated && !this.connected) {
-              return next('/robinhood');
             }
             this.releasePref();
             return next();

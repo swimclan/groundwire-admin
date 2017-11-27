@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {strategies, preferences, createPreferences} from 'services/preferences';
+import {disconnect} from 'services/authentication';
 
 // the root, initial state object
 const state = {
@@ -28,7 +29,7 @@ const getters = {
 const mutations = {
   toggleAuth: state => state.authenticated = !state.authenticated,
   setAuth: (state, auth) => state.authenticated = auth === true,
-  setConnected: (state, connected) => state.connected = connected === true,
+  setConnected: (state, connected) => state.connected = connected.result ? connected.result !== 'OK' : connected === true,
   setUser: (state, user) => state.user = user ? user : new String(),
   releaseUser: (state) => state.user = new String(),
   setRoute: (state, name) => state.currentRoute = name,
@@ -36,19 +37,24 @@ const mutations = {
   releasePref: (state) => state.preference = null,
   setStrategies: (state, strategies) => state.strategies = strategies,
   setPreferences: (state, preferences) => state.preferences = preferences,
-  setPrefProp: (state, {prop, val}) => state.preferences[prop] = val
+  setPrefProp: (state, {prop, val}) => state.preferences[prop] = val,
+  noop: (state) => true
 }
 
 const actions = {
   async setStrategies ({ commit }) {
     commit ('setStrategies', await strategies());
   },
-  async setPreferences ({ commit }) {
+  async setPreferences ({ commit }, cb) {
     commit ('setPreferences', await preferences());
+    cb ? cb(state.preferences) : false;
   },
   async savePreferences ({ commit, state }, cb) {
-    commit ('setPreferences', await createPreferences(state.preferences));
-    cb(state.preferences)
+    commit ('noop', await createPreferences(state.preferences));
+    cb ? cb(state.preferences) : false;
+  },
+  async disconnect({ commit }) {
+    commit ('setConnected', await disconnect());
   }
 }
 

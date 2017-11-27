@@ -41,7 +41,20 @@ config.set({
         },
         saved: {
           title: 'Saved'
+        },
+        reset: {
+          title: 'Reset'
         }
+      },
+      labels: {
+        connected: 'Connected',
+        disconnected: 'Disconnected',
+        connect: 'Connect',
+        disconnect: 'Disconnect'
+      },
+      icons: {
+        connected: '\uF00C',
+        disconnected: '\uF00D'
       }
     }
   },
@@ -110,6 +123,11 @@ config.set({
       url: 'https://api.groundwire.co/v1/preferences',
       method: 'POST',
       options: {}  
+    },
+    disconnect: {
+      url: 'https://api.groundwire.co/v1/user/disconnect',
+      method: 'GET',
+      options: {}
     }
   }
 });

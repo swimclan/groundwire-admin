@@ -16,6 +16,9 @@ export default {
     prop: 'value',
     event: 'input'
   },
+  created() {
+    this.$parent.$on('reset', () => this.p = this.value);
+  },
   data() {
     return {
       p: this.value

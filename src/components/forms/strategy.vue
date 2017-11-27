@@ -1,7 +1,8 @@
 <template>
+  <transition name="fade">
   <div class="preference-form-container">
     <section class="preference-form-heading-container">
-      <h1 class="preference-form-heading">Stop Loss Strategy</h1>
+      <h1 class="preference-form-heading">{{ heading }}</h1>
     </section>
     <section class="preference-form-description-container">
       <p class="preference-form-description">
@@ -10,18 +11,18 @@
     </section>
     <section class="preference-form-controls-container">
       <control-toggle
-        v-model="strategy"
+        v-model="preferences.strategy"
         :options="strategies"
-        @input="onInput"
       />
     </section>
-    <section class="preference-form-save-container">
+    <section class="preference-form-buttons">
       <control-button
         :options="{id: 0, title: saveButton, name: 'save'}"
         :callback="savePrefs"
       />
     </section>
   </div>
+  </transition>
 </template>
 
 <script>
@@ -34,22 +35,16 @@ export default {
   computed: {
     ...mapGetters(['strategies', 'preferences']),
   },
-  created() {
-    this.strategy = this.preferences.strategy
-  },
   data() {
     return {
       description: config.get('app.pages.dashboard.prefs.strategy.description'),
       strategy: null,
-      saveButton: config.get('app.ui.button.save.title')
+      saveButton: config.get('app.ui.button.save.title'),
+      heading: config.get('app.pages.dashboard.prefs.strategy.title')
     }
   },
   methods: {
-    ...mapMutations(['setPrefProp']),
     ...mapActions(['savePreferences']),
-    onInput() {
-      this.setPrefProp({prop: 'strategy', val: this.strategy});
-    },
     savePrefs() {
       this.savePreferences((prefs) => {
         this.$router.push({name: 'dashboard'});
@@ -62,21 +57,29 @@ export default {
 <style lang="scss" scoped>
   @import '../../assets/styles/index';
   .preference-form-container {
+    &.fade-enter-active {
+      animation-name: fades;
+      animation-duration: 0.5s;
+    }
     @include pref-form();
     section {
-      width: 100%;
+      @include preference-section();
       .preference-form-description {
         @include pref-form-description();
       }
-      &.preference-form-save-container {
-        button {
-          @include preference-save-button();
-        }
-        padding-top: 15px;
+      &.preference-form-heading-container {
+        @include pref-form-heading();
+      }
+      &.preference-form-buttons {
         display: flex;
+        justify-content: center;
+        button {
+          @include preference-button();
+        }
       }
     }
   }
+  @include fades();
 </style>
 
 

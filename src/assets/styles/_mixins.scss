@@ -11,10 +11,10 @@
   margin: $space auto;
 }
 
-@mixin basetext($reduce: 0em) {
+@mixin basetext($reduce: 0em, $enlarge: 0em) {
   font-family: Roboto, Arial, Helvetica, sans-serif;
   color: $app-white;
-  font-size: calc(1.5em - #{$reduce});
+  font-size: calc(1.5em - #{$reduce} + #{$enlarge});
   font-weight: 100;
 }
 
@@ -192,13 +192,34 @@
   margin: 0 auto;
   @include flex-center-stack();
 }
-
-@mixin pref-form-description() {
-  @include basetext($reduce: 0.5em);
+@mixin preference-section() {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+  width: 100%;
+  margin-bottom: 2em;
 }
 
-@mixin preference-save-button($width: 100%) {
+@mixin pref-form-heading() {
+  margin: 0;
+}
+
+@mixin pref-form-description() {
+  @include basetext($reduce: 0.4em);
+  line-height: 1.6em;
+}
+
+@mixin preference-button($width: 100%) {
+  flex: none;
   width: $width;
   margin: 0 auto;
   @include basetext();
+}
+
+@mixin fades() {
+  @keyframes fades {
+    0%    {opacity: 0;}
+    33%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
 }
