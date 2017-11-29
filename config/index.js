@@ -27,7 +27,7 @@ config.set({
         prefs: {
           account: {name: 'account', title: 'Robinhood Account', active: false, icon: '\uF2BE', description: 'Connect or disconnect your robinhood account'},
           risk: {name: 'risk', title: 'Risk Settings', active: false, icon: '\uF2C8', description: 'Manage the risk settings for your automated trading alogorithm'},
-          chase: {name: 'chase', title: 'Chase Coefficient', active: false, icon: '\uF201', description: 'Set the chase speed of the stop loss algorithm'},
+          chase: {name: 'chase', title: 'Chase Coefficient', active: false, icon: '\uF201', description: 'Set the chase speed of the trailing stop loss algorithm'},
           screener: {name: 'screener', title: 'Stock Picks', active: false, icon: '\uF03A', description: 'Set the criteria for the MSN screener stock picking feature'},
           strategy: {name: 'strategy', title: 'Stop Loss Strategy', active: false, icon: '\uF0AB', description: 'Select a specific trailing stop loss algorithm'},
           activate: {name: 'activate', title: 'Activate', active: false, icon: '\uF011', description: 'Turn on or off the automated trader for actively trading on your Robinhood account'}
@@ -70,6 +70,11 @@ config.set({
       tokenize: {
         success: 'Robinhood account successfully connected',
         unauthorized: 'Robinhood account credentials invalid'
+      },
+      activation: {
+        activated: 'Trader has been activated',
+        deactivated: 'Trader has been deactivated',
+        notconnected: 'No Robinhood account is connected.  Please connect a robinhood account before activating.'
       }
     }
   },

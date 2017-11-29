@@ -13,11 +13,13 @@ $app-gray: rgb(163, 163, 163);
 $app-light-gray: rgb(212, 212, 212);
 $app-gray-opaque: rgba(163, 163, 163, 0.3);
 $app-light-gray-opaque: rgba(212, 212, 212, 0.3);
+$app-ultra-light-gray-opaque: rgba(220, 220, 220, 0.3);
 $app-dark: darken($app-gray, 20%);
 $error-color: #881222;
 $body-bg-color: #f2f7fa;
 $app-main: #1490d3;
 $app-main-light: lighten($app-main, 30%);
+$app-main-ultra-light: lighten($app-main, 40%);
 $robinhood-green: #5eca9c;
 $robinhood-dark: #000;
 

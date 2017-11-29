@@ -2,7 +2,7 @@
   <span class="control-switch-container">
     <div class="switch-label" id="off" :data-label="labels.off" v-on:click="setSwitch(false)"></div>
     <div class="switch-backing" v-on:click="setSwitch()">
-      <i class="fa fa-bars switch-grip" :class="{on: p}"></i>
+      <i class="fa fa-bars switch-grip" :class="{on: p, disabled: !active}"></i>
     </div>
     <div class="switch-label" id="on" :data-label="labels.on" v-on:click="setSwitch(true)"></div>
   </span>
@@ -11,7 +11,7 @@
 <script>
 import {isUndefined} from 'lodash';
 export default {
-  props: ['labels', 'value'],
+  props: ['labels', 'value', 'disabled'],
   model: {
     prop: 'value',
     event: 'input'
@@ -21,13 +21,16 @@ export default {
   },
   data() {
     return {
-      p: this.value
+      p: this.value,
+      active: this.disabled ? !this.disabled : true
     }
   },
   methods: {
     setSwitch(val) {
-      this.p = !isUndefined(val) ? val : !this.p;
-      this.$emit('input', this.p);
+      if (this.active) {
+        this.p = !isUndefined(val) ? val : !this.p;
+        this.$emit('input', this.p);
+      }
     }
   }
 }
@@ -64,6 +67,9 @@ export default {
         color: $app-white;
         &.on {
           right: -34px;
+        }
+        &.disabled {
+          color: $app-ultra-light-gray-opaque;
         }
       }
 

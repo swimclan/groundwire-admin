@@ -8,7 +8,7 @@
 			</div>
 			<div class="input-container">
 				<span class="icon-container" id="password-icon"></span>
-				<input type="password" class="form-input" placeholder="Password" v-model="password" />
+				<input type="password" class="form-input" placeholder="Password" v-model="password" @keyup="onKeyup" />
 			</div>
 			<div class="input-container">
 				<button class="form-btn" v-on:click="authenticate()">{{ formButton }}</button>
@@ -52,6 +52,11 @@ export default {
 				this.flash.error = result.error;
 				this.flash.message = result.message;
 			});
+		},
+		onKeyup(e) {
+			if (e.keyCode === 13) {
+				this.authenticate();
+			}
 		}
   }
 }

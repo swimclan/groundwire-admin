@@ -46,7 +46,7 @@ const dashboardChildren = [
 ];
 
 const routes = [
-  { name: 'root', path: '*', redirect: '/login' },
+  { name: 'root', path: '*', redirect: '/dashboard' },
   { name: 'login', path: '/login', component: Login },
   { name: 'robinhood', path: '/robinhood', component: Robinhood },
   { 
